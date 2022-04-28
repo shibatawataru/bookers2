@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>Editing Book</h1>
+  		<% if @book.errors.any? %>
+      <%= @book.errors.count %> error prohibited this book from being saved:
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+      <% end %>
+        
+        <table style="border:none;" class="table">
+        <tbody>
+          <%= form_with model: @book do |f| %>
+        <tr style="border:none;">
+        <td style="border:none;"><label for="inputTitle">Title</label>
+          <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder: "title"%></td>
+        </tr>
+        <tr style="border:none;">
+        <td style="border:none;"><label for="inputOpinion">Opinion</label>
+        <%= f.text_field :body, autofocus: true, id: "inputOpinion", placeholder: "body" %></td>
+        </tr>
+        <tr style="border:none;">
+        <td style="border:none;"><%= f.submit "Update Book", class: "btn btn-success" %></td>
+        </tr>
+        <tr style="border:none;">
+        <td style="border:none;"><p><%= link_to "Show", book_path(@book.id) %><%= " | " %><%= link_to "Back", books_path %></p></td>
+        </tr>
+        <% end %>
+        </tbody>
+        </table>
+     </div>
+   </div>
+</div>
